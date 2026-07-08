@@ -26,17 +26,32 @@ function thumb(i) {
 
 export function blogIndexPage({ locale, articles }) {
   const c = idxCopy[locale];
+
+  /* Unique categories (stable English key + localized label). */
+  const catMap = new Map();
+  for (const a of articles) {
+    const key = pick(a.category, "en").toLowerCase();
+    if (!catMap.has(key)) catMap.set(key, pick(a.category, locale));
+  }
+  const allLabel = locale === "en" ? "All" : "Усі";
+  const chips = `<button class="chip is-active" data-filter="all" aria-pressed="true">${esc(allLabel)}</button>` +
+    [...catMap].map(([k, label]) => `<button class="chip" data-filter="${esc(k)}" aria-pressed="false">${esc(label)}</button>`).join("");
+
   const cards = articles
-    .map(
-      (a, i) => `<a class="post post--img reveal" style="--i:${i}" href="${localizePath(`/blog/${a.slug}/`, locale)}">
+    .map((a, i) => {
+      const key = pick(a.category, "en").toLowerCase();
+      return `<a class="post post--img reveal" data-cat="${esc(key)}" style="--i:${i % 9}" href="${localizePath(`/blog/${a.slug}/`, locale)}">
       ${thumb(i)}
       <span class="post__cat">${esc(pick(a.category, locale))}</span>
       <h3>${esc(pick(a.title, locale))}</h3>
       <p>${esc(pick(a.description, locale))}</p>
       <span class="post__meta">${a.read} ${esc(t(locale, "misc.min_read"))} <span class="post__go">${icons.arrow}</span></span>
-    </a>`
-    )
+    </a>`;
+    })
     .join("");
+
+  const moreLabel = locale === "en" ? "Show more articles" : "Показати ще статті";
+
   return `
 <section class="page-hero"><div class="page-hero__bg" aria-hidden="true"><span class="orb orb--1"></span><span class="orb orb--2"></span></div>
   <div class="container">
@@ -45,7 +60,11 @@ export function blogIndexPage({ locale, articles }) {
     <p class="page-hero__sub reveal">${esc(c.sub)}</p>
   </div>
 </section>
-<section class="section"><div class="container"><div class="post-grid">${cards}</div></div></section>
+<section class="section"><div class="container">
+  <div class="filter-bar reveal" data-blog-filter>${chips}</div>
+  <div class="post-grid" data-blog-grid>${cards}</div>
+  <div class="blog-more" data-blog-more hidden><button class="btn btn--ghost btn--lg">${esc(moreLabel)}</button></div>
+</div></section>
 `;
 }
 
