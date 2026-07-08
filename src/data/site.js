@@ -37,15 +37,16 @@ export const site = {
   },
 };
 
-/* Supported locales. `uk` is the root ("/"), others are path-prefixed ("/en/"). */
-export const locales = ["uk", "en"];
-export const defaultLocale = "uk";
+/* Supported locales. The default locale is the root ("/"); others are
+   path-prefixed ("/uk/"). Audience is foreigners, so English is the default. */
+export const locales = ["en", "uk"];
+export const defaultLocale = "en";
 
 /* Primary navigation — labels resolved per-locale from i18n; `key` maps to dict. */
 export const mainNav = [
   { key: "nav.services", href: "/services/", dropdown: "services" },
-  { key: "nav.insurance", href: "/services/insurance/" },
+  { key: "nav.residence", href: "/services/residence/" },
+  { key: "nav.visa", href: "/services/visa/" },
   { key: "nav.blog", href: "/blog/" },
-  { key: "nav.about", href: "/about/" },
   { key: "nav.contacts", href: "/contacts/" },
 ];

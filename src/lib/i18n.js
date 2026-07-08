@@ -9,6 +9,8 @@ export const dict = {
     "locale.name": "Українська",
 
     "nav.services": "Послуги",
+    "nav.residence": "ВНЖ",
+    "nav.visa": "Віза",
     "nav.insurance": "Страхування",
     "nav.blog": "Блог",
     "nav.about": "Про нас",
@@ -37,7 +39,7 @@ export const dict = {
     "form.err_name": "Вкажіть ваше ім’я",
     "form.err_phone": "Вкажіть коректний номер",
 
-    "foot.tagline": "Сервісний портал 24/7 для подорожей та документів.",
+    "foot.tagline": "Візи, в’їзд і легальне перебування іноземців в Україні. 24/7.",
     "foot.services": "Послуги",
     "foot.company": "Компанія",
     "foot.contacts": "Контакти",
@@ -65,6 +67,8 @@ export const dict = {
     "locale.name": "English",
 
     "nav.services": "Services",
+    "nav.residence": "Residence",
+    "nav.visa": "Visa",
     "nav.insurance": "Insurance",
     "nav.blog": "Blog",
     "nav.about": "About",
@@ -93,7 +97,7 @@ export const dict = {
     "form.err_name": "Please enter your name",
     "form.err_phone": "Please enter a valid number",
 
-    "foot.tagline": "A 24/7 service portal for travel and documents.",
+    "foot.tagline": "Visas, entry and legal residence for foreigners in Ukraine. 24/7.",
     "foot.services": "Services",
     "foot.company": "Company",
     "foot.contacts": "Contacts",

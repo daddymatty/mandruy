@@ -55,8 +55,11 @@ p { margin: 0 0 1rem; }
 .section--tint { background: var(--tint); }
 
 /* ---------- Reveal on scroll ---------- */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: calc(var(--i, 0) * 70ms); will-change: transform, opacity; }
-.reveal.in { opacity: 1; transform: none; }
+.reveal { opacity: 0; transform: translateY(38px) scale(.985); filter: blur(8px); transition: opacity .8s var(--ease), transform .9s var(--ease), filter .8s var(--ease); transition-delay: calc(var(--i, 0) * 75ms); will-change: transform, opacity, filter; }
+.reveal.in { opacity: 1; transform: none; filter: none; }
+/* Mask-wipe: section headings sweep open when their header reveals. */
+.sec-head h2, .page-hero h1 { clip-path: inset(0 105% 0 -5%); transition: clip-path 1s var(--ease) .08s; }
+.sec-head.in h2, .page-hero h1.in { clip-path: inset(0 -5% 0 -5%); }
 .reveal-word { display: inline-block; opacity: 0; transform: translateY(.5em) rotate(2deg); animation: word .9s var(--ease) forwards; }
 .reveal-word:nth-child(2) { animation-delay: .12s; }
 @keyframes word { to { opacity: 1; transform: none; } }
@@ -377,9 +380,66 @@ p { margin: 0 0 1rem; }
   .hero__stats { gap: 1.4rem; }
 }
 
+/* ============================================================
+   KINETIC MOTION v2 — bold scroll-driven layer (still airy/simple)
+   ============================================================ */
+
+/* Big outline wordmarks that slide opposite ways (razed-style band). */
+.kinetic { padding: clamp(30px, 5vw, 64px) 0; overflow: hidden; --stroke: rgba(11, 16, 32, .16); }
+.kinetic--dark { background: var(--ink); --stroke: rgba(255, 255, 255, .18); }
+.kinetic__row { display: flex; align-items: center; gap: 1.6rem; width: max-content; will-change: transform; }
+.kinetic__row + .kinetic__row { margin-top: .2rem; }
+.kinetic__row span { font-size: clamp(2.4rem, 8vw, 6rem); font-weight: 900; letter-spacing: -.04em; line-height: .95; color: transparent; -webkit-text-stroke: 1.4px var(--stroke); text-transform: uppercase; }
+.kinetic__row span.fill { color: transparent; background: var(--grad); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-stroke: 0; animation: gradShift 6s ease infinite; }
+.kinetic--dark .kinetic__row span:not(.fill) { -webkit-text-stroke-color: rgba(255, 255, 255, .2); }
+.kinetic__row i { color: var(--sun); display: inline-flex; } .kinetic__row i svg { width: clamp(28px, 4vw, 48px); height: clamp(28px, 4vw, 48px); }
+.kinetic__row--a { animation: marquee 34s linear infinite; }
+.kinetic__row--b { animation: marqueeRev 40s linear infinite; }
+@keyframes marqueeRev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+/* Pinned scroll-scrub showcase: a sticky stage whose step cross-fades. */
+.showcase { position: relative; background: var(--tint); }
+.showcase__track { height: 340vh; }
+.showcase__stage { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.showcase__ghost { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(14rem, 42vw, 40rem); font-weight: 900; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(37, 99, 235, .1); pointer-events: none; user-select: none; transition: opacity .5s; }
+.showcase__inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; width: 100%; }
+.showcase__head { max-width: 22ch; }
+.showcase__head h2 { font-size: clamp(2rem, 4vw, 3.4rem); }
+.showcase__stepwrap { position: relative; min-height: 260px; }
+.sc-step { position: absolute; inset: 0; opacity: 0; transform: translateY(48px) scale(.95); filter: blur(6px); transition: opacity .55s var(--ease), transform .6s var(--ease), filter .55s var(--ease); pointer-events: none; }
+.sc-step.is-active { opacity: 1; transform: none; filter: none; }
+.sc-step__n { display: block; font-size: 3.2rem; font-weight: 900; letter-spacing: -.03em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1; margin-bottom: .6rem; }
+.sc-step h3 { font-size: 1.7rem; margin-bottom: .5rem; }
+.sc-step p { color: var(--muted); font-size: 1.05rem; max-width: 34ch; }
+.showcase__rail { grid-column: 1 / -1; height: 4px; border-radius: 4px; background: rgba(37, 99, 235, .14); overflow: hidden; margin-top: 1.5rem; }
+.showcase__rail span { display: block; height: 100%; width: 0; background: var(--grad); transition: width .15s linear; }
+.showcase__dots { display: flex; gap: .5rem; margin-top: 1rem; grid-column: 1 / -1; }
+.showcase__dots b { width: 9px; height: 9px; border-radius: 50%; background: rgba(37, 99, 235, .25); transition: transform .3s, background .3s; }
+.showcase__dots b.on { background: var(--sky); transform: scale(1.35); }
+
+/* Magnetic / tilt: JS writes transforms; keep the motion buttery. */
+.magnetic { transition: transform .3s var(--ease); }
+.tilt { transition: transform .35s var(--ease), box-shadow .4s var(--ease); transform-style: preserve-3d; }
+
+@media (max-width: 940px) {
+  .showcase__track { height: auto; }
+  .showcase__stage { position: static; height: auto; padding: clamp(48px, 8vw, 80px) 0; }
+  .showcase__inner { grid-template-columns: 1fr; }
+  .showcase__ghost { display: none; }
+  .showcase__stepwrap { min-height: 0; }
+  .sc-step { position: static; opacity: 1; transform: none; filter: none; margin-bottom: 2rem; }
+  .sc-step.is-active { }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
-  .reveal { opacity: 1; transform: none; }
-  .orb, .marquee__track, .cta__blob, .grid-lines { animation: none !important; }
+  .reveal { opacity: 1; transform: none; filter: none; }
+  .sec-head h2, .page-hero h1 { clip-path: none !important; }
+  .orb, .marquee__track, .kinetic__row, .cta__blob, .grid-lines { animation: none !important; }
+  .showcase__track { height: auto; }
+  .showcase__stage { position: static; height: auto; padding: 60px 0; }
+  .showcase__ghost { display: none; }
+  .sc-step { position: static; opacity: 1; transform: none; filter: none; margin-bottom: 2rem; }
+  .magnetic, .tilt { transform: none !important; }
 }

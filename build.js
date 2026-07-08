@@ -85,11 +85,11 @@ async function build() {
       locale, "/",
       {
         title: locale === "en"
-          ? "Mandruy — 24/7 travel service portal: insurance, visas, tickets, tours"
-          : "Мандруй — сервісний портал 24/7: страхування, ВНЖ, квитки, тури",
+          ? "Mandruy — visas, entry & residence for foreigners visiting Ukraine"
+          : "Мандруй — візи, в’їзд і посвідки для іноземців в Україні",
         description: locale === "en"
-          ? "Insurance with war-risk coverage, residence permits, bus/train/flight tickets, tours, hotels, eSIM and transfers — all in one place. Online in minutes, support 24/7."
-          : "Страхування з покриттям воєнних ризиків, ВНЖ і документи, квитки на автобус/потяг/літак, тури, готелі, eSIM і трансфери — усе в одному місці. Онлайн за хвилини, підтримка 24/7.",
+          ? "For foreigners visiting Ukraine: visas and e-Visa, entry documents, insurance with war-risk cover and temporary or permanent residence permits. Guided online, in English, 24/7."
+          : "Для іноземців, що відвідують Україну: візи та e-Visa, документи для в’їзду, страхування з покриттям воєнних ризиків і посвідки на тимчасове чи постійне проживання. Онлайн, 24/7.",
         schemas: [faqSchema(homeFaq.map((f) => ({ q: pick(f.q, locale), a: pick(f.a, locale) })))],
       },
       homePage({ locale, services, articles }),
@@ -100,10 +100,10 @@ async function build() {
     await writePage(
       locale, "/services/",
       {
-        title: (locale === "en" ? "All services" : "Усі послуги") + " — " + site.name,
+        title: (locale === "en" ? "Services for foreigners in Ukraine" : "Послуги для іноземців в Україні") + " — " + site.name,
         description: locale === "en"
-          ? "Every travel and document service in one place: insurance, residence permits, tickets, tours, hotels, eSIM and transfers."
-          : "Усі послуги для подорожей та документів в одному місці: страхування, ВНЖ, квитки, тури, готелі, eSIM і трансфери.",
+          ? "Everything for foreigners in one place: visas and e-Visa, entry insurance, temporary and permanent residence, work permits, legalization and legal support."
+          : "Усе для іноземців в одному місці: візи та e-Visa, страхування для в’їзду, тимчасове й постійне проживання, дозвіл на працю, легалізація та юридичний супровід.",
         schemas: [breadcrumbSchema(crumb({ name: t(locale, "nav.services"), href: localizePath("/services/", locale) }))],
       },
       servicesIndexPage({ locale, services }),
@@ -143,10 +143,10 @@ async function build() {
     await writePage(
       locale, "/blog/",
       {
-        title: (locale === "en" ? "Blog — travel guides & tips" : "Блог — гайди та поради для мандрівників") + " | " + site.name,
+        title: (locale === "en" ? "Blog — Ukraine visa & residence guides" : "Блог — гайди про візи та проживання в Україні") + " | " + site.name,
         description: locale === "en"
-          ? "Guides, rules and tips about travel, insurance, residence permits and border crossing."
-          : "Гайди, правила та поради про подорожі, страхування, ВНЖ і перетин кордону.",
+          ? "Guides for foreigners: entry documents, e-Visa, grounds for a residence permit, insurance requirements and border-crossing rules for Ukraine."
+          : "Гайди для іноземців: документи для в’їзду, e-Visa, підстави для посвідки, вимоги до страхування та правила перетину кордону України.",
         schemas: [breadcrumbSchema(crumb({ name: t(locale, "nav.blog"), href: localizePath("/blog/", locale) }))],
       },
       blogIndexPage({ locale, articles }),
@@ -178,7 +178,7 @@ async function build() {
     /* About / Contacts / FAQ */
     await writePage(locale, "/about/", {
       title: (locale === "en" ? "About Mandruy" : "Про Мандруй") + " — " + t(locale, "misc.support_24_7"),
-      description: locale === "en" ? "Mandruy gathers every travel and document service in one place. Our story, values and team." : "Мандруй зібрав усі послуги для подорожей та документів в одному місці. Наша історія, цінності та команда.",
+      description: locale === "en" ? "Mandruy helps foreigners enter Ukraine and stay legally — visas, insurance, residence and legal support in one place. Our story and values." : "Мандруй допомагає іноземцям в’їхати в Україну й залишатися легально — візи, страхування, посвідки та юрсупровід в одному місці. Наша історія та цінності.",
       schemas: [breadcrumbSchema(crumb({ name: t(locale, "nav.about"), href: localizePath("/about/", locale) }))],
     }, aboutPage({ locale }), { priority: "0.6" });
 
@@ -230,7 +230,7 @@ async function build() {
   /* robots.txt */
   await writeFile(
     path.join(DIST, "robots.txt"),
-    `User-agent: *\nAllow: /\nDisallow: /privacy/\nDisallow: /en/privacy/\n\nSitemap: ${site.domain}/sitemap.xml\n`,
+    `User-agent: *\nAllow: /\nDisallow: /privacy/\nDisallow: /uk/privacy/\n\nSitemap: ${site.domain}/sitemap.xml\n`,
     "utf8"
   );
 
@@ -252,7 +252,7 @@ ${sitemapUrls
   await writeFile(
     path.join(DIST, "site.webmanifest"),
     JSON.stringify({
-      name: site.legalName, short_name: site.name, lang: "uk",
+      name: site.legalName, short_name: site.name, lang: "en",
       start_url: BASE + "/", display: "standalone", background_color: "#ffffff", theme_color: "#0b1020",
       icons: [{ src: BASE + "/assets/img/favicon.svg", sizes: "any", type: "image/svg+xml" }],
     }),

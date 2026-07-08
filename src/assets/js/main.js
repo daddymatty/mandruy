@@ -164,6 +164,57 @@
     toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
   }
 
+  /* ---- Pinned showcase: scroll-scrub through the journey steps ---- */
+  var showcase = document.querySelector("[data-showcase]");
+  var wideMq = window.matchMedia("(min-width: 941px)");
+  if (showcase && !reduce && wideMq.matches) {
+    var scSteps = [].slice.call(showcase.querySelectorAll(".sc-step"));
+    var scDots = [].slice.call(showcase.querySelectorAll(".showcase__dots b"));
+    var scGhost = showcase.querySelector("[data-showcase-ghost]");
+    var scRail = showcase.querySelector("[data-showcase-rail]");
+    var scTrack = showcase.querySelector(".showcase__track");
+    var scN = scSteps.length, scTick = false, scCur = -1;
+    var scUpdate = function () {
+      scTick = false;
+      var rect = scTrack.getBoundingClientRect();
+      var total = rect.height - window.innerHeight;
+      var prog = Math.min(1, Math.max(0, -rect.top / (total || 1)));
+      var idx = Math.min(scN - 1, Math.floor(prog * scN));
+      if (scRail) scRail.style.width = (prog * 100) + "%";
+      if (idx !== scCur) {
+        scCur = idx;
+        scSteps.forEach(function (s, i) { s.classList.toggle("is-active", i === idx); });
+        scDots.forEach(function (d, i) { d.classList.toggle("on", i === idx); });
+        if (scGhost) scGhost.textContent = "0" + (idx + 1);
+      }
+    };
+    window.addEventListener("scroll", function () { if (!scTick) { scTick = true; requestAnimationFrame(scUpdate); } }, { passive: true });
+    scUpdate();
+  }
+
+  /* ---- Magnetic buttons + card tilt (pointer-fine only) ---- */
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (fine && !reduce) {
+    document.querySelectorAll(".magnetic").forEach(function (el) {
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var mx = e.clientX - (r.left + r.width / 2);
+        var my = e.clientY - (r.top + r.height / 2);
+        el.style.transform = "translate(" + (mx * 0.25).toFixed(1) + "px," + (my * 0.4).toFixed(1) + "px)";
+      });
+      el.addEventListener("pointerleave", function () { el.style.transform = ""; });
+    });
+    document.querySelectorAll(".tilt").forEach(function (el) {
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = "translateY(-6px) perspective(900px) rotateX(" + (-py * 6).toFixed(2) + "deg) rotateY(" + (px * 8).toFixed(2) + "deg)";
+      });
+      el.addEventListener("pointerleave", function () { el.style.transform = ""; });
+    });
+  }
+
   /* ---- Footer year ---- */
   var yr = document.querySelector("[data-year]");
   if (yr) yr.textContent = new Date().getFullYear();

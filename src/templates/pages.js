@@ -13,32 +13,32 @@ const esc = (s = "") =>
 const aboutCopy = {
   uk: {
     tag: "Про нас",
-    title: "Ми спрощуємо подорожі",
-    sub: "Мандруй — сервісний портал, що зібрав усі послуги для подорожей та документів в одному місці, щоб ви витрачали час на враження, а не на бюрократію.",
+    title: "Ми спрощуємо в’їзд і перебування в Україні",
+    sub: "Мандруй — сервіс для іноземців, що зібрав візи, страхування, документи та посвідки в одному місці, щоб ви легально в’їхали й залишилися в Україні без бюрократії.",
     values: [
-      { t: "Турбота", d: "Ставимося до кожної поїздки, ніби це наша власна." },
+      { t: "Турбота", d: "Ведемо кожен кейс так, ніби це наш власний переїзд." },
       { t: "Прозорість", d: "Чесні ціни й зрозумілі умови без дрібного шрифту." },
-      { t: "Швидкість", d: "Оформлення онлайн за хвилини, підтримка 24/7." },
-      { t: "Досвід", d: "Знаємо правила й нюанси, тому ви уникаєте помилок." },
+      { t: "Швидкість", d: "Старт онлайн ще до приїзду, підтримка 24/7." },
+      { t: "Досвід", d: "Знаємо імміграційні правила й нюанси, тому ви уникаєте відмов." },
     ],
     story: [
-      "Ми починали з простої ідеї: подорожувати має бути легко. Замість десятків сайтів для страхування, квитків, документів і зв’язку — один сервіс, де все поруч.",
-      "Сьогодні Мандруй допомагає тисячам мандрівників щомісяця: іноземцям, що прямують в Україну, і українцям по всьому світу.",
+      "Ми починали з простої ідеї: приїхати в Україну й легально тут залишитися має бути зрозуміло. Замість десятків інстанцій і посередників — один сервіс, де є все: від візи до посвідки.",
+      "Сьогодні Мандруй допомагає іноземцям з десятків країн: оформлює візи та e-Visa, страхування, легалізацію документів і посвідки на проживання — з підтримкою англійською.",
     ],
   },
   en: {
     tag: "About",
-    title: "We make travel simpler",
-    sub: "Mandruy is a service portal that gathers every travel and document service in one place, so you spend your time on experiences, not bureaucracy.",
+    title: "We make entering and staying in Ukraine simple",
+    sub: "Mandruy is a service for foreigners that gathers visas, insurance, documents and residence permits in one place, so you enter and stay in Ukraine legally without the bureaucracy.",
     values: [
-      { t: "Care", d: "We treat every trip as if it were our own." },
+      { t: "Care", d: "We run every case as if it were our own move abroad." },
       { t: "Transparency", d: "Fair prices and clear terms with no fine print." },
-      { t: "Speed", d: "Online in minutes, support 24/7." },
-      { t: "Experience", d: "We know the rules and nuances, so you avoid mistakes." },
+      { t: "Speed", d: "Start online before you arrive, support 24/7." },
+      { t: "Experience", d: "We know immigration rules and nuances, so you avoid refusals." },
     ],
     story: [
-      "We started with a simple idea: travel should be easy. Instead of dozens of sites for insurance, tickets, documents and connectivity — one service where everything is close at hand.",
-      "Today Mandruy helps thousands of travellers every month: foreigners heading to Ukraine and Ukrainians all over the world.",
+      "We started with a simple idea: arriving in Ukraine and staying here legally should be clear. Instead of dozens of offices and middlemen — one service that covers everything from your visa to your residence permit.",
+      "Today Mandruy helps foreigners from dozens of countries: visas and e-Visa, insurance, document legalization and residence permits — with support in English.",
     ],
   },
 };

@@ -1,31 +1,31 @@
-/* Home-page FAQ (bilingual). */
+/* Home-page FAQ (bilingual) — foreigners visiting & staying in Ukraine. */
 export const homeFaq = [
   {
-    q: { uk: "Що таке Мандруй?", en: "What is Mandruy?" },
+    q: { en: "What documents do I need to enter Ukraine?", uk: "Які документи потрібні для в’їзду в Україну?" },
     a: {
-      uk: "Мандруй — це сервісний портал 24/7, де в одному місці зібрані всі послуги для подорожей: страхування, оформлення ВНЖ і документів, квитки, тури, готелі, eSIM і трансфери.",
-      en: "Mandruy is a 24/7 service portal that gathers all travel services in one place: insurance, residence permits and documents, tickets, tours, hotels, eSIM and transfers.",
+      en: "A valid passport, an entry document (a visa or e-Visa, unless your country is visa-free), medical insurance and proof of the purpose of your trip. We confirm the exact list for your nationality and purpose.",
+      uk: "Дійсний паспорт, документ для в’їзду (віза або e-Visa, якщо ваша країна не безвізова), медичне страхування та підтвердження мети поїздки. Ми підтвердимо точний перелік для вашого громадянства й мети.",
     },
   },
   {
-    q: { uk: "Наскільки швидко можна оформити послугу?", en: "How fast can I get a service?" },
+    q: { en: "What can be the basis for staying in Ukraine long term?", uk: "Що може бути підставою для тривалого перебування в Україні?" },
     a: {
-      uk: "Страхування, eSIM, квитки та бронювання оформлюються онлайн за кілька хвилин. Послуги з юридичним супроводом стартують одразу після безкоштовної консультації.",
-      en: "Insurance, eSIM, tickets and bookings are arranged online within minutes. Services with legal support start right after a free consultation.",
+      en: "The legal grounds for a residence permit include employment, study, family reunification, investment or business, and a few others. The right grounds determine which permit you apply for — we help you choose the strongest one.",
+      uk: "Правові підстави для посвідки включають працевлаштування, навчання, возз’єднання сім’ї, інвестиції чи бізнес та деякі інші. Підстава визначає, яку посвідку оформлювати — ми допоможемо обрати найсильнішу.",
     },
   },
   {
-    q: { uk: "Ви працюєте з іноземцями та з українцями?", en: "Do you work with both foreigners and Ukrainians?" },
+    q: { en: "What is the difference between a visa and a residence permit?", uk: "Яка різниця між візою та посвідкою на проживання?" },
     a: {
-      uk: "Так. Ми допомагаємо іноземцям, що прямують в Україну, і українцям, які подорожують за кордон. Сайт і підтримка доступні українською та англійською.",
-      en: "Yes. We help foreigners heading to Ukraine and Ukrainians travelling abroad. The website and support are available in Ukrainian and English.",
+      en: "A visa lets you enter and stay for a limited time. A residence permit, based on qualifying grounds, lets you live in Ukraine long term. A long-term D visa is usually the bridge from one to the other.",
+      uk: "Віза дозволяє в’їхати й перебувати обмежений час. Посвідка на проживання, на основі підстав, дозволяє жити в Україні тривало. Довгострокова D-віза зазвичай є містком між ними.",
     },
   },
   {
-    q: { uk: "Це безпечно — платити онлайн?", en: "Is it safe to pay online?" },
+    q: { en: "Do I need insurance, and does it need war-risk coverage?", uk: "Чи потрібне страхування і чи має воно покривати воєнні ризики?" },
     a: {
-      uk: "Оплата проходить у захищеному платіжному вікні, дані картки не зберігаються на нашому боці. Після оплати ви одразу отримуєте поліс, квиток або підтвердження на пошту.",
-      en: "Payments go through a secure checkout and card data is not stored on our side. Right after payment you receive the policy, ticket or confirmation by email.",
+      en: "Yes — valid medical insurance is required to cross the border and to apply for a residence permit. We recommend policies with war-risk coverage, which also meet migration-service requirements.",
+      uk: "Так — чинне медичне страхування потрібне і для перетину кордону, і для оформлення посвідки. Радимо поліси з покриттям воєнних ризиків, які також відповідають вимогам міграційної служби.",
     },
   },
 ];

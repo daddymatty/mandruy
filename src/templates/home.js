@@ -1,4 +1,4 @@
-/* Home page — the animated flagship. */
+/* Home page — foreigners visiting & legally staying in Ukraine. Kinetic. */
 import { site } from "../data/site.js";
 import { t, pick, localizePath } from "../lib/i18n.js";
 import { icons, serviceIcon, leadForm, ctaBand } from "./components.js";
@@ -7,77 +7,77 @@ const esc = (s = "") =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const copy = {
-  uk: {
-    kicker: "Сервісний портал 24/7",
-    h1a: "Подорожуй легко —",
-    h1b: "усе в одному місці",
-    sub: "Страхування, ВНЖ, квитки, тури, готелі, eSIM і трансфери. Оформлюйте онлайн за кілька хвилин, а підтримка поруч цілодобово.",
-    trust: ["клієнтів", "країн", "партнерів"],
-    servicesTitle: "Наші послуги",
-    servicesSub: "Обирайте потрібне — решту зробимо ми.",
-    howTitle: "Як це працює",
-    how: [
-      { t: "Оберіть послугу", d: "Знайдіть потрібне в каталозі або опишіть запит у формі." },
-      { t: "Отримайте пропозицію", d: "Менеджер порахує вартість і підбере найкращий варіант." },
-      { t: "Оплатіть онлайн", d: "Захищена оплата карткою — швидко й без черг." },
-      { t: "Готово!", d: "Поліс, квиток чи документ приходить на пошту одразу." },
-    ],
-    whyTitle: "Чому Мандруй",
-    why: [
-      { t: "Усе в одному місці", d: "Не треба десятків сайтів — усі послуги для подорожі під однією дахом." },
-      { t: "Підтримка 24/7", d: "Ми на зв’язку в будь-якому часовому поясі — Telegram, WhatsApp, телефон." },
-      { t: "Чесні ціни", d: "Прозора вартість без прихованих комісій. Бачите фінальну суму одразу." },
-      { t: "Онлайн за 5 хвилин", d: "Більшість послуг оформлюється повністю дистанційно." },
-    ],
-    blogTitle: "Корисне для мандрівників",
-    faqTitle: "Часті запитання",
-    ctaTitle: "Готові вирушати?",
-    ctaText: "Залиште заявку — підберемо страхування, квитки й усе потрібне для вашої подорожі.",
-    formLead: "Порахуємо вашу подорож",
-  },
   en: {
-    kicker: "A 24/7 service portal",
-    h1a: "Travel easy —",
-    h1b: "everything in one place",
-    sub: "Insurance, residence permits, tickets, tours, hotels, eSIM and transfers. Arrange it online in minutes, with support by your side around the clock.",
-    trust: ["clients", "countries", "partners"],
-    servicesTitle: "Our services",
-    servicesSub: "Pick what you need — we’ll handle the rest.",
-    howTitle: "How it works",
-    how: [
-      { t: "Choose a service", d: "Find what you need in the catalogue or describe your request in the form." },
-      { t: "Get an offer", d: "A manager calculates the price and picks the best option." },
-      { t: "Pay online", d: "Secure card payment — fast and queue-free." },
-      { t: "Done!", d: "The policy, ticket or document arrives by email right away." },
+    kicker: "For foreigners visiting Ukraine",
+    h1a: "Visit Ukraine —",
+    h1b: "and stay legally",
+    sub: "Visas, entry documents and residence permits for foreigners. We guide you from your first visa to a legal, long-term stay — online and in English.",
+    trust: ["foreigners helped", "nationalities", "immigration experts"],
+    kinetic: ["Visa", "Entry", "Residence", "Ukraine", "Stay legal"],
+    servicesTitle: "What we handle",
+    servicesSub: "From your visa to your residence permit — every step in one place.",
+    journeyTag: "Your journey",
+    journeyTitle: "From arrival to a legal stay",
+    journeySub: "Four steps take you from your entry document to a residence permit. Scroll to see how.",
+    steps: [
+      { t: "Get your entry document", d: "We confirm whether you need a visa, an e-Visa or can enter visa-free — and help you obtain it." },
+      { t: "Enter Ukraine", d: "Cross the border with a valid passport, medical insurance and proof of your purpose of stay." },
+      { t: "Establish your grounds", d: "A job, studies, family or investment becomes the legal basis for staying long term." },
+      { t: "Get your residence permit", d: "We file your temporary residence permit and register your stay — no refusals over details." },
     ],
     whyTitle: "Why Mandruy",
     why: [
-      { t: "All in one place", d: "No need for dozens of sites — every travel service under one roof." },
-      { t: "24/7 support", d: "We’re reachable in any time zone — Telegram, WhatsApp, phone." },
-      { t: "Fair prices", d: "Transparent pricing with no hidden fees. You see the final sum upfront." },
-      { t: "Online in 5 minutes", d: "Most services are arranged fully remotely." },
+      { t: "One place for everything", d: "Visa, insurance, documents and residence — no juggling separate agencies." },
+      { t: "Support in English, 24/7", d: "Reach a real person in any time zone — Telegram, WhatsApp, phone." },
+      { t: "Fair, upfront prices", d: "Transparent fees with no hidden costs. You see the final sum before you start." },
+      { t: "Start before you arrive", d: "Most steps are handled remotely, so your paperwork is ready when you land." },
     ],
-    blogTitle: "Useful for travellers",
-    faqTitle: "Frequently asked questions",
-    ctaTitle: "Ready to set off?",
-    ctaText: "Leave a request — we’ll arrange insurance, tickets and everything your trip needs.",
-    formLead: "Let’s price your trip",
+    blogTitle: "Guides for your stay",
+    ctaTitle: "Planning your move to Ukraine?",
+    ctaText: "Tell us your goal — we’ll map your visa, entry and residence into one clear plan.",
+  },
+  uk: {
+    kicker: "Для іноземців, що відвідують Україну",
+    h1a: "Відвідайте Україну —",
+    h1b: "і залишайтесь легально",
+    sub: "Візи, документи для в’їзду та посвідки на проживання для іноземців. Проведемо від першої візи до законного тривалого перебування — онлайн.",
+    trust: ["іноземцям допомогли", "громадянств", "імміграційних експертів"],
+    kinetic: ["Віза", "В’їзд", "ВНЖ", "Україна", "Легально"],
+    servicesTitle: "Що ми беремо на себе",
+    servicesSub: "Від візи до посвідки на проживання — кожен крок в одному місці.",
+    journeyTag: "Ваш шлях",
+    journeyTitle: "Від приїзду до законного перебування",
+    journeySub: "Чотири кроки ведуть вас від документа на в’їзд до посвідки. Прокрутіть, щоб побачити.",
+    steps: [
+      { t: "Отримайте документ для в’їзду", d: "Підтвердимо, чи потрібна віза, e-Visa, чи можна безвізово — і допоможемо оформити." },
+      { t: "В’їдьте в Україну", d: "Перетніть кордон з дійсним паспортом, медичним страхуванням і підтвердженням мети перебування." },
+      { t: "Встановіть підставу", d: "Робота, навчання, сім’я чи інвестиції стають законною підставою для тривалого перебування." },
+      { t: "Отримайте посвідку", d: "Оформимо посвідку на тимчасове проживання й зареєструємо перебування — без відмов через дрібниці." },
+    ],
+    whyTitle: "Чому Мандруй",
+    why: [
+      { t: "Усе в одному місці", d: "Віза, страхування, документи й посвідка — без десятків окремих агенцій." },
+      { t: "Підтримка англійською, 24/7", d: "Реальна людина на зв’язку в будь-якому часовому поясі — Telegram, WhatsApp, телефон." },
+      { t: "Чесні ціни наперед", d: "Прозора вартість без прихованих платежів. Ви бачите фінальну суму до старту." },
+      { t: "Почніть до приїзду", d: "Більшість кроків — дистанційно, тож документи готові ще до вашого приземлення." },
+    ],
+    blogTitle: "Гайди для вашого перебування",
+    ctaTitle: "Плануєте переїзд до України?",
+    ctaText: "Розкажіть про вашу мету — складемо візу, в’їзд і посвідку в один зрозумілий план.",
   },
 };
-
-const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
 export function homePage({ locale, services, articles }) {
   const c = copy[locale];
   const stats = [
-    { n: site.stats.clients, plus: "+", label: c.trust[0] },
-    { n: site.stats.countries, plus: "+", label: c.trust[1] },
-    { n: site.stats.partners, plus: "+", label: c.trust[2] },
+    { n: site.stats.clients, label: c.trust[0] },
+    { n: site.stats.countries, label: c.trust[1] },
+    { n: site.stats.partners, label: c.trust[2] },
   ];
 
   const serviceCards = services
     .map(
-      (s, i) => `<a class="svc reveal svc--${s.accent}" style="--i:${i}" href="${localizePath(`/services/${s.slug}/`, locale)}" data-accent="${s.accent}">
+      (s, i) => `<a class="svc reveal tilt svc--${s.accent}" style="--i:${i}" href="${localizePath(`/services/${s.slug}/`, locale)}">
       <span class="svc__ic">${serviceIcon(s.icon)}</span>
       <h3 class="svc__name">${esc(pick(s.name, locale))}</h3>
       <p class="svc__tag">${esc(pick(s.tagline, locale))}</p>
@@ -86,16 +86,8 @@ export function homePage({ locale, services, articles }) {
     )
     .join("");
 
-  const howSteps = c.how
-    .map(
-      (s, i) => `<li class="step reveal" style="--i:${i}"><span class="step__n">${i + 1}</span><div><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p></div></li>`
-    )
-    .join("");
-
   const whyCards = c.why
-    .map(
-      (w, i) => `<div class="why reveal" style="--i:${i}"><span class="why__ic">${icons.check}</span><h3>${esc(w.t)}</h3><p>${esc(w.d)}</p></div>`
-    )
+    .map((w, i) => `<div class="why reveal" style="--i:${i}"><span class="why__ic">${icons.check}</span><h3>${esc(w.t)}</h3><p>${esc(w.d)}</p></div>`)
     .join("");
 
   const posts = articles
@@ -111,10 +103,18 @@ export function homePage({ locale, services, articles }) {
     .join("");
 
   const statTiles = stats
-    .map((s) => `<div class="stat reveal"><span class="stat__big" data-count="${s.n}">0</span><span class="stat__plus">${s.plus}</span><span class="stat__label">${esc(s.label)}</span></div>`)
+    .map((s) => `<div class="stat reveal"><span class="stat__big" data-count="${s.n}">0</span><span class="stat__label">${esc(s.label)}</span></div>`)
     .join("");
 
   const marquee = services.concat(services).map((s) => `<span>${esc(pick(s.name, locale))}</span><i>${icons.plane}</i>`).join("");
+
+  const kw = c.kinetic;
+  const kRow = (arr) => arr.concat(arr).map((w, i) => `<span class="${i % 2 ? "fill" : ""}">${esc(w)}</span><i>${icons.plane}</i>`).join("");
+
+  const stepCards = c.steps
+    .map((s, i) => `<article class="sc-step${i === 0 ? " is-active" : ""}" data-step="${i}"><span class="sc-step__n">0${i + 1}</span><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p></article>`)
+    .join("");
+  const dots = c.steps.map((_, i) => `<b${i === 0 ? ' class="on"' : ""}></b>`).join("");
 
   return `
 <section class="hero">
@@ -128,8 +128,8 @@ export function homePage({ locale, services, articles }) {
       <h1 class="hero__title"><span class="reveal-word">${esc(c.h1a)}</span> <span class="reveal-word grad">${esc(c.h1b)}</span></h1>
       <p class="hero__sub reveal">${esc(c.sub)}</p>
       <div class="hero__actions reveal">
-        <a class="btn btn--primary btn--lg" href="${localizePath("/services/", locale)}">${esc(t(locale, "nav.services"))} ${icons.arrow}</a>
-        <a class="btn btn--ghost btn--lg" href="#services">${esc(t(locale, "cta.details"))}</a>
+        <a class="btn btn--primary btn--lg magnetic" href="${localizePath("/services/", locale)}">${esc(t(locale, "nav.services"))} ${icons.arrow}</a>
+        <a class="btn btn--ghost btn--lg" href="#journey">${esc(t(locale, "cta.details"))}</a>
       </div>
       <div class="hero__stats">${statTiles}</div>
     </div>
@@ -154,10 +154,26 @@ export function homePage({ locale, services, articles }) {
   </div>
 </section>
 
-<section class="section section--tint">
-  <div class="container">
-    <header class="sec-head reveal"><span class="sec-tag">${esc(t(locale, "misc.how"))}</span><h2>${esc(c.howTitle)}</h2></header>
-    <ol class="steps">${howSteps}</ol>
+<section class="kinetic kinetic--dark" aria-hidden="true">
+  <div class="kinetic__row kinetic__row--a">${kRow(kw)}</div>
+  <div class="kinetic__row kinetic__row--b">${kRow(kw.slice().reverse())}</div>
+</section>
+
+<section class="showcase" id="journey" data-showcase>
+  <div class="showcase__track">
+    <div class="showcase__stage">
+      <span class="showcase__ghost" data-showcase-ghost aria-hidden="true">01</span>
+      <div class="container showcase__inner">
+        <div class="showcase__head">
+          <span class="sec-tag">${esc(c.journeyTag)}</span>
+          <h2>${esc(c.journeyTitle)}</h2>
+          <p>${esc(c.journeySub)}</p>
+        </div>
+        <div class="showcase__stepwrap">${stepCards}</div>
+        <div class="showcase__rail"><span data-showcase-rail></span></div>
+        <div class="showcase__dots">${dots}</div>
+      </div>
+    </div>
   </div>
 </section>
 
