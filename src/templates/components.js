@@ -162,6 +162,7 @@ export function footer({ locale }) {
       <div class="footer__brand">
         <a class="logo logo--light" href="${localizePath("/", locale)}" aria-label="${esc(site.name)}">${logo(locale)}</a>
         <p>${esc(t(locale, "foot.tagline"))}</p>
+        <p class="footer__legius">${esc(t(locale, "foot.by"))} <a href="https://legius.com.ua" target="_blank" rel="noopener">LEGIUS</a> · <a href="https://legius.com.ua" target="_blank" rel="noopener">legius.com.ua</a></p>
         <div class="footer__social">
           <a href="${site.social.instagram}" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
           <a href="${site.social.telegram}" target="_blank" rel="noopener" aria-label="Telegram">TG</a>

@@ -46,6 +46,7 @@ export const dict = {
     "foot.rights": "Усі права захищено.",
     "foot.privacy": "Політика конфіденційності",
     "foot.sitemap": "Карта сайту",
+    "foot.by": "Проєкт юридичної компанії",
 
     "misc.support_24_7": "Підтримка 24/7",
     "misc.online": "Онлайн за 5 хвилин",
@@ -104,6 +105,7 @@ export const dict = {
     "foot.rights": "All rights reserved.",
     "foot.privacy": "Privacy policy",
     "foot.sitemap": "Sitemap",
+    "foot.by": "A project of the law firm",
 
     "misc.support_24_7": "24/7 support",
     "misc.online": "Online in 5 minutes",

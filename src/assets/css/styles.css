@@ -334,6 +334,9 @@ p { margin: 0 0 1rem; }
 .site-footer { background: var(--ink); color: rgba(255, 255, 255, .7); padding: clamp(48px, 6vw, 72px) 0 2rem; }
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255, 255, 255, .1); }
 .footer__brand p { margin: 1rem 0; max-width: 30ch; font-size: .92rem; }
+.footer__legius { font-size: .88rem; }
+.footer__legius a { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255, 255, 255, .35); transition: border-color .2s; }
+.footer__legius a:hover { border-color: #fff; }
 .footer__social { display: flex; gap: .6rem; }
 .footer__social a { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: rgba(255, 255, 255, .08); color: #fff; font-size: .78rem; font-weight: 800; transition: background .3s, transform .3s; }
 .footer__social a:hover { background: var(--sky); transform: translateY(-3px); }
