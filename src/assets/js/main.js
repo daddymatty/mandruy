@@ -215,6 +215,20 @@
     });
   }
 
+  /* ---- Global scroll progress (--p) for the day-bg golden-hour shift ---- */
+  var dayBg = document.querySelector(".day-bg");
+  if (dayBg) {
+    var pTick = false;
+    var pUpd = function () {
+      pTick = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = Math.min(1, Math.max(0, window.scrollY / (max || 1)));
+      document.body.style.setProperty("--p", p.toFixed(3));
+    };
+    window.addEventListener("scroll", function () { if (!pTick) { pTick = true; requestAnimationFrame(pUpd); } }, { passive: true });
+    pUpd();
+  }
+
   /* ---- Footer year ---- */
   var yr = document.querySelector("[data-year]");
   if (yr) yr.textContent = new Date().getFullYear();

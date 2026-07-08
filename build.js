@@ -91,6 +91,7 @@ async function build() {
           ? "For foreigners visiting Ukraine: visas and e-Visa, entry documents, insurance with war-risk cover and temporary or permanent residence permits. Guided online, in English, 24/7."
           : "Для іноземців, що відвідують Україну: візи та e-Visa, документи для в’їзду, страхування з покриттям воєнних ризиків і посвідки на тимчасове чи постійне проживання. Онлайн, 24/7.",
         schemas: [faqSchema(homeFaq.map((f) => ({ q: pick(f.q, locale), a: pick(f.a, locale) })))],
+        bodyClass: "home-day",
       },
       homePage({ locale, services, articles }),
       { priority: "1.0", changefreq: "weekly" }

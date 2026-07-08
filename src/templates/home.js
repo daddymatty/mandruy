@@ -9,7 +9,7 @@ const esc = (s = "") =>
 const copy = {
   en: {
     kicker: "For foreigners visiting Ukraine",
-    h1a: "Visit Ukraine —",
+    h1a: "Visit Ukraine",
     h1b: "and stay legally",
     sub: "Visas, entry documents and residence permits for foreigners. We guide you from your first visa to a legal, long-term stay — online and in English.",
     trust: ["foreigners helped", "nationalities", "immigration experts"],
@@ -38,7 +38,7 @@ const copy = {
   },
   uk: {
     kicker: "Для іноземців, що відвідують Україну",
-    h1a: "Відвідайте Україну —",
+    h1a: "Відвідайте Україну",
     h1b: "і залишайтесь легально",
     sub: "Візи, документи для в’їзду та посвідки на проживання для іноземців. Проведемо від першої візи до законного тривалого перебування — онлайн.",
     trust: ["іноземцям допомогли", "громадянств", "імміграційних експертів"],
@@ -69,11 +69,6 @@ const copy = {
 
 export function homePage({ locale, services, articles }) {
   const c = copy[locale];
-  const stats = [
-    { n: site.stats.clients, label: c.trust[0] },
-    { n: site.stats.countries, label: c.trust[1] },
-    { n: site.stats.partners, label: c.trust[2] },
-  ];
 
   const serviceCards = services
     .map(
@@ -102,11 +97,15 @@ export function homePage({ locale, services, articles }) {
     )
     .join("");
 
-  const statTiles = stats
-    .map((s) => `<div class="stat reveal"><span class="stat__big" data-count="${s.n}">0</span><span class="stat__label">${esc(s.label)}</span></div>`)
-    .join("");
-
   const marquee = services.concat(services).map((s) => `<span>${esc(pick(s.name, locale))}</span><i>${icons.plane}</i>`).join("");
+
+  const passT = locale === "en"
+    ? [["Entry", "Visa / e-Visa"], ["Basis", "Work · Study · Family"], ["Result", "Residence permit"]]
+    : [["В’їзд", "Віза / e-Visa"], ["Підстава", "Робота · Навчання · Сім’я"], ["Результат", "Посвідка"]];
+  const passHtml = passT.map(([a, b]) => `<div><small>${esc(a)}</small><b>${esc(b)}</b></div>`).join("");
+  const trust = locale === "en"
+    ? `<b>120,000+</b> foreigners helped · <b>90+</b> nationalities · support in English`
+    : `<b>120 000+</b> іноземцям допомогли · <b>90+</b> громадянств · підтримка англійською`;
 
   const kw = c.kinetic;
   const kRow = (arr) => arr.concat(arr).map((w, i) => `<span class="${i % 2 ? "fill" : ""}">${esc(w)}</span><i>${icons.plane}</i>`).join("");
@@ -117,26 +116,24 @@ export function homePage({ locale, services, articles }) {
   const dots = c.steps.map((_, i) => `<b${i === 0 ? ' class="on"' : ""}></b>`).join("");
 
   return `
+<div class="day-bg" aria-hidden="true"></div>
 <section class="hero">
-  <div class="hero__bg" aria-hidden="true">
-    <span class="orb orb--1"></span><span class="orb orb--2"></span><span class="orb orb--3"></span>
-    <span class="grid-lines"></span>
-  </div>
   <div class="container hero__inner">
     <div class="hero__copy">
       <span class="kicker reveal"><span class="pulse"></span>${esc(c.kicker)}</span>
-      <h1 class="hero__title"><span class="reveal-word">${esc(c.h1a)}</span> <span class="reveal-word grad">${esc(c.h1b)}</span></h1>
+      <h1 class="hero__title"><span class="reveal-word">${esc(c.h1a)}</span><br><span class="reveal-word ital">${esc(c.h1b)}</span></h1>
       <p class="hero__sub reveal">${esc(c.sub)}</p>
       <div class="hero__actions reveal">
         <a class="btn btn--primary btn--lg magnetic" href="${localizePath("/services/", locale)}">${esc(t(locale, "nav.services"))} ${icons.arrow}</a>
         <a class="btn btn--ghost btn--lg" href="#journey">${esc(t(locale, "cta.details"))}</a>
       </div>
-      <div class="hero__stats">${statTiles}</div>
+      <div class="pass reveal">${passHtml}</div>
+      <p class="hero__trust reveal">${trust}</p>
     </div>
     <div class="hero__form reveal">
       <div class="hero__form-card">
         <span class="hero__badge">${icons.clock} ${esc(t(locale, "misc.online"))}</span>
-        ${leadForm({ locale, id: "hero-lead", source: "home-hero", compact: false })}
+        ${leadForm({ locale, id: "hero-lead", source: "home-hero", compact: true })}
       </div>
     </div>
   </div>
