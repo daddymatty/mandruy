@@ -1,0 +1,29 @@
+{
+  "name": "mandruy",
+  "version": "1.0.0",
+  "description": "Мандруй — сервісний портал 24/7: страхування, ВНЖ, квитки, тури, готелі, eSIM, трансфери. Статичний генератор на чистому HTML5/CSS3/JS (UK/EN).",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "node tools/serve.js",
+    "dev": "node build.js && node tools/serve.js"
+  },
+  "keywords": [
+    "travel",
+    "insurance",
+    "visa",
+    "ukraine",
+    "static-site",
+    "seo"
+  ],
+  "author": "Мандруй",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "csso": "^5.0.5",
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.48.0"
+  }
+}
