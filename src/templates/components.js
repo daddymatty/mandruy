@@ -81,7 +81,7 @@ export function header({ locale, currentPath = "", alternates = [] }) {
     <nav class="nav" aria-label="Main"><ul class="nav__list">${nav}</ul></nav>
     <div class="header__cta">
       ${langSwitch}
-      <a class="btn btn--primary btn--sm" href="${localizePath("/contacts/", locale)}#lead">${esc(t(locale, "cta.consult"))}</a>
+      <a class="btn btn--ghost btn--sm" href="${localizePath("/contacts/", locale)}#lead">${esc(t(locale, "cta.consult"))}</a>
     </div>
     <button class="burger" data-burger aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
   </div>

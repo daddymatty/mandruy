@@ -30,7 +30,10 @@ const BASE = (process.env.BASE_PATH || "").replace(/\/+$/, "");
 if (process.env.SITE_URL) site.domain = process.env.SITE_URL.replace(/\/+$/, "");
 
 function applyBase(html) {
-  return BASE ? html.replace(/(href|src)="\/(?!\/)/g, `$1="${BASE}/`) : html;
+  if (!BASE) return html;
+  return html
+    .replace(/(href|src)="\/(?!\/)/g, `$1="${BASE}/`)
+    .replace(/url\((['"]?)\/(?!\/)/g, `url($1${BASE}/`);
 }
 
 const sitemapUrls = [];

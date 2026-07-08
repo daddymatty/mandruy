@@ -229,6 +229,25 @@
     pUpd();
   }
 
+  /* ---- Parallax layers (e.g. the Ukraine panorama) ---- */
+  var parallax = document.querySelectorAll("[data-parallax]");
+  if (parallax.length && !reduce) {
+    var plTick = false;
+    var plUpd = function () {
+      plTick = false;
+      parallax.forEach(function (el) {
+        var host = el.parentElement;
+        var r = host.getBoundingClientRect();
+        var vh = window.innerHeight;
+        if (r.bottom < -50 || r.top > vh + 50) return;
+        var prog = (vh - r.top) / (vh + r.height);
+        el.style.transform = "translateY(" + ((prog - 0.5) * 90).toFixed(1) + "px) scale(1.16)";
+      });
+    };
+    window.addEventListener("scroll", function () { if (!plTick) { plTick = true; requestAnimationFrame(plUpd); } }, { passive: true });
+    plUpd();
+  }
+
   /* ---- Footer year ---- */
   var yr = document.querySelector("[data-year]");
   if (yr) yr.textContent = new Date().getFullYear();
