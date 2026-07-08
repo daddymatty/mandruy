@@ -97,8 +97,6 @@ export function homePage({ locale, services, articles }) {
     )
     .join("");
 
-  const marquee = services.concat(services).map((s) => `<span>${esc(pick(s.name, locale))}</span><i>${icons.plane}</i>`).join("");
-
   const passT = locale === "en"
     ? [["Entry", "Visa / e-Visa"], ["Basis", "Work · Study · Family"], ["Result", "Residence permit"]]
     : [["В’їзд", "Віза / e-Visa"], ["Підстава", "Робота · Навчання · Сім’я"], ["Результат", "Посвідка"]];
@@ -117,27 +115,18 @@ export function homePage({ locale, services, articles }) {
 
   return `
 <div class="day-bg" aria-hidden="true"></div>
-<section class="hero">
-  <div class="container hero__inner">
-    <div class="hero__copy">
-      <span class="kicker reveal"><span class="pulse"></span>${esc(c.kicker)}</span>
-      <h1 class="hero__title"><span class="reveal-word">${esc(c.h1a)}</span><br><span class="reveal-word ital">${esc(c.h1b)}</span></h1>
-      <p class="hero__sub reveal">${esc(c.sub)}</p>
-      <div class="hero__actions reveal">
-        <a class="btn btn--primary btn--lg magnetic" href="${localizePath("/services/", locale)}">${esc(t(locale, "nav.services"))} ${icons.arrow}</a>
-        <a class="btn btn--ghost btn--lg" href="#journey">${esc(t(locale, "cta.details"))}</a>
-      </div>
-      <div class="pass reveal">${passHtml}</div>
-      <p class="hero__trust reveal">${trust}</p>
+<section class="hero hero--editorial">
+  <div class="container">
+    <span class="kicker reveal"><span class="pulse"></span>${esc(c.kicker)}</span>
+    <h1 class="ed-title"><span class="reveal-word">${esc(c.h1a)}</span><br><span class="reveal-word ital">${esc(c.h1b)}</span></h1>
+    <p class="ed-sub reveal">${esc(c.sub)}</p>
+    <div class="hero__actions reveal">
+      <a class="btn btn--primary btn--lg magnetic" href="${localizePath("/services/", locale)}">${esc(t(locale, "nav.services"))} ${icons.arrow}</a>
+      <a class="btn btn--ghost btn--lg" href="#journey">${esc(t(locale, "cta.details"))}</a>
     </div>
-    <div class="hero__form reveal">
-      <div class="hero__form-card">
-        <span class="hero__badge">${icons.clock} ${esc(t(locale, "misc.online"))}</span>
-        ${leadForm({ locale, id: "hero-lead", source: "home-hero", compact: true })}
-      </div>
-    </div>
+    <div class="pass reveal">${passHtml}</div>
+    <p class="hero__trust reveal">${trust}</p>
   </div>
-  <div class="marquee" aria-hidden="true"><div class="marquee__track">${marquee}</div></div>
 </section>
 
 <section class="section" id="services">
@@ -181,7 +170,28 @@ export function homePage({ locale, services, articles }) {
   </div>
 </section>
 
-<section class="section section--tint">
+<section class="section section--tint" id="start">
+  <div class="container lead-sec">
+    <div class="lead-sec__copy reveal">
+      <span class="sec-tag">${esc(locale === "en" ? "Get started" : "Почнімо")}</span>
+      <h2>${esc(locale === "en" ? "Tell us your goal — we’ll map the path" : "Розкажіть про мету — складемо шлях")}</h2>
+      <p>${esc(locale === "en" ? "Leave a request and a lawyer will confirm your visa, entry and residence options in one clear plan. Free consultation, answer within 15 minutes." : "Залиште заявку — юрист підтвердить варіанти візи, в’їзду та посвідки в одному плані. Безкоштовна консультація, відповідь за 15 хвилин.")}</p>
+      <ul class="lead-sec__pts">
+        <li><span class="bic">${icons.check}</span>${esc(locale === "en" ? "In English, 24/7" : "Англійською, 24/7")}</li>
+        <li><span class="bic">${icons.check}</span>${esc(locale === "en" ? "Start before you arrive" : "Старт ще до приїзду")}</li>
+        <li><span class="bic">${icons.check}</span>${esc(locale === "en" ? "Transparent, upfront pricing" : "Прозорі ціни наперед")}</li>
+      </ul>
+    </div>
+    <div class="lead-sec__form reveal">
+      <div class="hero__form-card">
+        <span class="hero__badge">${icons.clock} ${esc(t(locale, "misc.online"))}</span>
+        ${leadForm({ locale, id: "home-lead", source: "home", compact: false })}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
   <div class="container">
     <header class="sec-head sec-head--row reveal">
       <div><span class="sec-tag">${esc(t(locale, "nav.blog"))}</span><h2>${esc(c.blogTitle)}</h2></div>
