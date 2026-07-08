@@ -6,15 +6,30 @@ const esc = (s = "") =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const idxCopy = {
-  uk: { tag: "Блог", title: "Корисне для мандрівників", sub: "Гайди, правила та поради про подорожі, страхування й документи." },
-  en: { tag: "Blog", title: "Useful for travellers", sub: "Guides, rules and tips about travel, insurance and documents." },
+  uk: { tag: "Блог", title: "Гайди для іноземців в Україні", sub: "Візи, в’їзд, підстави для ВНЖ, документи, робота, навчання й побут — усе, що варто знати." },
+  en: { tag: "Blog", title: "Guides for foreigners in Ukraine", sub: "Visas, entry, grounds for residence, documents, work, study and daily life — everything worth knowing." },
 };
+
+/* Small vector Ukraine thumbnail (varied hue per article). */
+function thumb(i) {
+  const hues = [212, 262, 190, 38, 150, 300];
+  const h = hues[i % hues.length];
+  const id = "bt" + i;
+  return `<svg class="post__img" viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(${h},86%,60%)"/><stop offset="1" stop-color="#ffe0a0"/></linearGradient></defs>
+    <rect width="400" height="225" fill="url(#${id})"/>
+    <circle cx="314" cy="70" r="42" fill="#fff5cf" opacity=".95"/>
+    <path d="M0 152 L110 122 L230 154 L330 124 L400 150 V225 H0Z" fill="#ffffff" opacity=".2"/>
+    <g fill="#243a7a" opacity=".82" transform="translate(40,152)"><rect x="0" y="-32" width="10" height="32"/><path d="M0 -32 l5 -11 l5 11Z" fill="#ffce3a"/><rect x="28" y="-22" width="34" height="22"/><path d="M28 -22 q17 -20 34 0Z"/><ellipse cx="45" cy="-24" rx="7" ry="9" fill="#ffce3a"/><rect x="84" y="-36" width="8" height="36"/><path d="M84 -36 l4 -8 l4 8Z" fill="#ffce3a"/><rect x="110" y="-18" width="48" height="18"/></g>
+  </svg>`;
+}
 
 export function blogIndexPage({ locale, articles }) {
   const c = idxCopy[locale];
   const cards = articles
     .map(
-      (a, i) => `<a class="post reveal" style="--i:${i}" href="${localizePath(`/blog/${a.slug}/`, locale)}">
+      (a, i) => `<a class="post post--img reveal" style="--i:${i}" href="${localizePath(`/blog/${a.slug}/`, locale)}">
+      ${thumb(i)}
       <span class="post__cat">${esc(pick(a.category, locale))}</span>
       <h3>${esc(pick(a.title, locale))}</h3>
       <p>${esc(pick(a.description, locale))}</p>
